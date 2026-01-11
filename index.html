@@ -1344,6 +1344,19 @@
     }
 }
 
+/* EMERGENCY MOBILE PERFORMANCE FIX */
+@media (max-width: 768px) {
+    /* Disable 3D completely on mobile */
+    .showcase-3d {
+        display: none !important;
+    }
+    
+    /* Hide heavy sections on mobile */
+    .comparison-section {
+        display: none !important;
+    }
+}
+
 .media-wrapper img {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
