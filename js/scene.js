@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load your 3D model
     loader.load(
-        './assets/iphoneweb11.glb', // UPDATE THIS to your actual file name
+        './assets/iphoneweb14.glb', // UPDATE THIS to your actual file name
         (gltf) => {
             model = gltf.scene;
             
