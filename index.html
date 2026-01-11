@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ads4D | High-Performance 3D Visuals</title>
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonts - Non-blocking -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+</noscript>
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1448,46 +1451,74 @@
         </div>
     </section>
 
-    <section class="comparison-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>See the <span class="gradient-text">Transformation</span></h2>
-                <p>Drag the slider to compare the before and after of our hyper-realistic 3D renders. It shows what we can do.</p>
-            </div>
+   <section class="comparison-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>See the <span class="gradient-text">Transformation</span></h2>
+            <p>Drag the slider to compare the before and after of our hyper-realistic 3D renders. It shows what we can do.</p>
+        </div>
 
-            <div class="comparison-layout">
-                <!-- Left: Comparisons -->
-                <div class="comparisons-column">
-                    <!-- Comparison 1 -->
-                    <div class="comparison-wrapper">
-                        <div class="comparison-container" data-comparison="1">
-                            <img src="./assets/before1.webp" alt="Before" class="image-before">
-                            <img src="./assets/after1.webp" alt="After" class="image-after">
-                            <div class="slider-line"></div>
-                            <div class="slider-handle"></div>
-                            <div class="comparison-labels">
-                                <span class="label label-before">start</span>
-                                <span class="label label-after">finish</span>
-                            </div>
+        <div class="comparison-layout">
+            <!-- Left: Comparisons -->
+            <div class="comparisons-column">
+                <!-- Comparison 1 -->
+                <div class="comparison-wrapper">
+                    <div class="comparison-container" data-comparison="1">
+                        <img src="./assets/before1.webp" 
+                             srcset="./assets/before1-mobile.webp 600w,
+                                     ./assets/before1.webp 1920w"
+                             sizes="(max-width: 768px) 100vw, 50vw"
+                             alt="Before" 
+                             class="image-before"
+                             loading="lazy"
+                             decoding="async">
+                        <img src="./assets/after1.webp" 
+                             srcset="./assets/after1-mobile.webp 600w,
+                                     ./assets/after1.webp 1920w"
+                             sizes="(max-width: 768px) 100vw, 50vw"
+                             alt="After" 
+                             class="image-after"
+                             loading="lazy"
+                             decoding="async">
+                        <div class="slider-line"></div>
+                        <div class="slider-handle"></div>
+                        <div class="comparison-labels">
+                            <span class="label label-before">start</span>
+                            <span class="label label-after">finish</span>
                         </div>
-                        <p class="comparison-caption">Product Showcase - Watch Detail</p>
                     </div>
-
-                    <!-- Comparison 2 -->
-                    <div class="comparison-wrapper">
-                        <div class="comparison-container" data-comparison="2">
-                            <img src="./assets/before2.webp" alt="Before" class="image-before">
-                            <img src="./assets/after2.webp" alt="After" class="image-after">
-                            <div class="slider-line"></div>
-                            <div class="slider-handle"></div>
-                            <div class="comparison-labels">
-                                <span class="label label-before">start</span>
-                                <span class="label label-after">finish</span>
-                            </div>
-                        </div>
-                        <p class="comparison-caption">E-commerce Hero Image</p>
-                    </div>
+                    <p class="comparison-caption">Product Showcase - Watch Detail</p>
                 </div>
+
+                <!-- Comparison 2 -->
+                <div class="comparison-wrapper">
+                    <div class="comparison-container" data-comparison="2">
+                        <img src="./assets/before2.webp" 
+                             srcset="./assets/before2-mobile.webp 600w,
+                                     ./assets/before2.webp 1920w"
+                             sizes="(max-width: 768px) 100vw, 50vw"
+                             alt="Before" 
+                             class="image-before"
+                             loading="lazy"
+                             decoding="async">
+                        <img src="./assets/after2.webp" 
+                             srcset="./assets/after2-mobile.webp 600w,
+                                     ./assets/after2.webp 1920w"
+                             sizes="(max-width: 768px) 100vw, 50vw"
+                             alt="After" 
+                             class="image-after"
+                             loading="lazy"
+                             decoding="async">
+                        <div class="slider-line"></div>
+                        <div class="slider-handle"></div>
+                        <div class="comparison-labels">
+                            <span class="label label-before">start</span>
+                            <span class="label label-after">finish</span>
+                        </div>
+                    </div>
+                    <p class="comparison-caption">E-commerce Hero Image</p>
+                </div>
+            </div>
 
                 <!-- Right: Process -->
                 <div class="process-column">
@@ -1530,7 +1561,7 @@
         </div>
     </section>
 
-<!-- OPTIMIZED PORTFOLIO SECTION WITH LAZY LOADING -->
+<!-- OPTIMIZED PORTFOLIO SECTION WITH RESPONSIVE IMAGES -->
 <section id="work" class="portfolio">
     <div class="container">
         <div class="section-header">
@@ -1543,6 +1574,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="./assets/AIskydive.webp" 
+                         srcset="./assets/AIskydive-mobile.webp 600w,
+                                 ./assets/AIskydive.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1555664424-778a69032334?q=80&w=1920&auto=format&fit=crop'" 
@@ -1557,6 +1591,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/EsteeLauder.webp" 
+                         srcset="assets/EsteeLauder-mobile.webp 600w,
+                                 assets/EsteeLauder.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1920&auto=format&fit=crop'" 
@@ -1572,6 +1609,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/insta360hero.webp" 
+                         srcset="assets/insta360hero-mobile.webp 600w,
+                                 assets/insta360hero.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1920&auto=format&fit=crop'" 
@@ -1586,6 +1626,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/Lancaster.webp" 
+                         srcset="assets/Lancaster-mobile.webp 600w,
+                                 assets/Lancaster.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1920&auto=format&fit=crop'" 
@@ -1601,6 +1644,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/insta360web3.webp" 
+                         srcset="assets/insta360web3-mobile.webp 600w,
+                                 assets/insta360web3.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1920&auto=format&fit=crop'" 
@@ -1615,6 +1661,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/Esteeweb2.webp" 
+                         srcset="assets/Esteeweb2-mobile.webp 600w,
+                                 assets/Esteeweb2.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1920&auto=format&fit=crop'" 
@@ -1630,6 +1679,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/Esteeweb1.webp" 
+                         srcset="assets/Esteeweb1-mobile.webp 600w,
+                                 assets/Esteeweb1.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1920&auto=format&fit=crop'" 
@@ -1645,6 +1697,9 @@
             <div class="work-card vertical">
                 <div class="media-wrapper">
                     <img src="assets/Canweb2.webp" 
+                         srcset="assets/Canweb2-mobile.webp 600w,
+                                 assets/Canweb2.webp 1080w"
+                         sizes="(max-width: 768px) 100vw, 33vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=1080&auto=format&fit=crop'" 
@@ -1693,6 +1748,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/Insta360rocks.webp" 
+                         srcset="assets/Insta360rocks-mobile.webp 600w,
+                                 assets/Insta360rocks.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1560393464-5c69a73c5770?q=80&w=1920&auto=format&fit=crop'" 
@@ -1725,6 +1783,9 @@
             <div class="work-card horizontal">
                 <div class="media-wrapper">
                     <img src="assets/insta360web2.webp" 
+                         srcset="assets/insta360web2-mobile.webp 600w,
+                                 assets/insta360web2.webp 1920w"
+                         sizes="(max-width: 768px) 100vw, 50vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=1920&auto=format&fit=crop'" 
@@ -1740,6 +1801,9 @@
             <div class="work-card vertical">
                 <div class="media-wrapper">
                     <img src="assets/Canweb1.webp" 
+                         srcset="assets/Canweb1-mobile.webp 600w,
+                                 assets/Canweb1.webp 1080w"
+                         sizes="(max-width: 768px) 100vw, 33vw"
                          loading="lazy"
                          decoding="async"
                          onerror="this.src='https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1080&auto=format&fit=crop'" 
@@ -2129,7 +2193,10 @@ document.querySelector('.nav-email-copy')?.addEventListener('click', async funct
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 <!-- ADD THIS LINE FOR DRACO SUPPORT -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
-
+<!-- Font Awesome - Load last -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+</body>
 
 </body>
 
