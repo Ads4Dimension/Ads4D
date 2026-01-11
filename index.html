@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads4D | High-Performance 3D Visuals</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #030014;
+            --bg-card: #0f1021;
+            --primary: #8b5cf6;
+            --primary-glow: #7c3aed;
+            --secondary: #ec4899;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.08), transparent 25%);
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        /* Header */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(3, 0, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 72px;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .bold-text{
+            font-weight: 1000;
+            font: underline;
+            font-size: 18px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: white;
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        /* 3D Showcase Section */
+.showcase-3d {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(139, 92, 246, 0.03) 100%);
+}
+
+.showcase-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    align-items: center;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.showcase-content {
+    padding: 60px 0;
+    z-index: 10;
+}
+
+.showcase-content h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 52px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    font-weight: 800;
+}
+
+.showcase-content p {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.showcase-features {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.showcase-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+}
+
+.showcase-feature i {
+    color: var(--primary);
+    font-size: 18px;
+    width: 24px;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#threejs-canvas {
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+    opacity: 0.6;
+    animation: bounce 2s infinite;
+}
+
+.scroll-hint i {
+    font-size: 24px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .showcase-container {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 0;
+    }
+    
+    .showcase-content {
+        order: 2;
+        padding: 40px 0 60px;
+    }
+    
+    .canvas-container {
+        order: 1;
+        height: 70vh;
+    }
+    
+    .showcase-content h2 {
+        font-size: 38px;
+    }
+    
+    .scroll-hint {
+        display: none;
+    }
+}
+
+
+        /* Trusted By Strip */
+        .logos {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .logo-scroll {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .logo-item {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        /* Features */
+        .features {
+            padding: 120px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Portfolio */
+.portfolio {
+    padding: 100px 0;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+
+/* Horizontal items (16:9 ratio) - span 6 columns */
+.work-card.horizontal {
+    grid-column: span 6;
+}
+
+/* Vertical item (9:16 ratio) - span 4 columns */
+.work-card.vertical {
+    grid-column: span 4;
+}
+
+.work-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    cursor: pointer;
+}
+
+.media-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+/* Horizontal media wrapper - 16:9 aspect ratio */
+.work-card.horizontal .media-wrapper {
+    aspect-ratio: 16 / 9;
+}
+
+/* Vertical media wrapper - 9:16 aspect ratio */
+.work-card.vertical .media-wrapper {
+    aspect-ratio: 9 / 16;
+}
+
+.media-wrapper img, 
+.media-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.work-card:hover .media-wrapper img,
+.work-card:hover .media-wrapper video {
+    transform: scale(1.05);
+}
+
+/* Update your existing .overlay CSS with these changes */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(3,0,20,0.95), transparent);
+    z-index: 2;
+    pointer-events: none; /* ADD THIS - allows clicks to pass through to video controls */
+}
+
+/* Make the text inside overlay clickable if needed */
+.overlay .tag,
+.overlay h3 {
+    pointer-events: auto; /* Text remains selectable if needed */
+}
+
+/* Ensure video controls are always on top */
+.media-wrapper video {
+    position: relative;
+    z-index: 1;
+}
+
+/* Make video controls always accessible */
+.media-wrapper video::-webkit-media-controls-panel {
+    z-index: 3 !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .work-card.horizontal {
+        grid-column: span 8;
+    }
+    
+    .work-card.vertical {
+        grid-column: span 4;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .work-card.horizontal,
+    .work-card.vertical {
+        grid-column: span 1;
+    }
+    
+    .work-card.vertical .media-wrapper {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+        /* About/Stats */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 100px 0;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-box {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border-radius: 30px;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0 30px;
+            background: #02000d;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            margin-left: 20px;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 48px; }
+            .nav-links { display: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            .stat-box { position: static; margin-top: 20px; display: inline-block; }
+        }
+
+/* Services Section - 3 Column Grid */
+.services {
+    padding: 100px 0 80px;
+    position: relative;
+    background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.02) 100%);
+}
+
+.services-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 70px;
+}
+
+.services-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.services-header p {
+    color: var(--text-muted);
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.services-list {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 24px;
+}
+
+.service-item {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-4px);
+}
+
+.service-item:hover::before {
+    transform: scaleX(1);
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 20px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.service-item:hover .service-icon {
+    background: rgba(139, 92, 246, 0.25);
+    transform: rotate(5deg) scale(1.1);
+}
+
+.service-content h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.service-content p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Tablet - 2 Columns */
+@media (max-width: 1024px) {
+    .services-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .services-header h2 {
+        font-size: 40px;
+    }
+}
+
+/* Mobile - 1 Column */
+@media (max-width: 768px) {
+    .services-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .services-header h2 {
+        font-size: 36px;
+    }
+    
+    .service-item {
+        padding: 24px;
+    }
+    
+    .service-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+}
+
+.comparison-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.02) 100%);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 70px;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .comparison-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .comparisons-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .comparison-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            cursor: col-resize;
+            user-select: none;
+        }
+
+        .comparison-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .image-after {
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .slider-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background: white;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: col-resize;
+            z-index: 11;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .slider-handle:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .slider-handle::before,
+        .slider-handle::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .slider-handle::before {
+            left: 12px;
+            border-width: 8px 10px 8px 0;
+            border-color: transparent #030014 transparent transparent;
+        }
+
+        .slider-handle::after {
+            right: 12px;
+            border-width: 8px 0 8px 10px;
+            border-color: transparent transparent transparent #030014;
+        }
+
+        .comparison-labels {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .label {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .label-before {
+            color: #ef4444;
+        }
+
+        .label-after {
+            color: #10b981;
+        }
+
+        .comparison-caption {
+            text-align: center;
+            margin-top: 12px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Process Column */
+        .process-column {
+            padding: 20px;
+        }
+
+        .process-column h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 60px;
+            width: 2px;
+            height: calc(100% + 12px);
+            background: linear-gradient(180deg, var(--primary), transparent);
+        }
+
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 700;
+            z-index: 1;
+            position: relative;
+        }
+
+        .step-content h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .comparison-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+
+            .process-column {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .comparison-section {
+                padding: 60px 0;
+            }
+
+            .slider-handle {
+                width: 40px;
+                height: 40px;
+            }
+
+            .slider-handle::before {
+                left: 10px;
+                border-width: 6px 8px 6px 0;
+            }
+
+            .slider-handle::after {
+                right: 10px;
+                border-width: 6px 0 6px 8px;
+            }
+
+            .process-column h3 {
+                font-size: 28px;
+            }
+        }
+
+        .faq-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0.02) 0%, transparent 100%);
+        }
+
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .faq-item.active {
+            background: rgba(139, 92, 246, 0.05);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            gap: 20px;
+        }
+
+        .faq-question h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 0;
+            flex: 1;
+        }
+
+        .faq-icon {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            background: rgba(139, 92, 246, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--primary);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 28px 24px 28px;
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 60px 0;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+
+            .faq-question {
+                padding: 20px;
+            }
+
+            .faq-question h3 {
+                font-size: 16px;
+            }
+
+            .faq-answer-content {
+                padding: 0 20px 20px 20px;
+                font-size: 15px;
+            }
+        }
+
+        /* Quick Copy Section */
+        .quick-copy {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quick-copy-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .copy-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #cbd5e1;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .copy-btn.copied {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .copy-btn i {
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn.copied i {
+            transform: scale(1.2);
+        }
+
+        .copy-text {
+            font-weight: 500;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .cta-card {
+                padding: 60px 30px;
+            }
+
+            .cta-card h2 {
+                font-size: 32px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .copy-buttons {
+                flex-direction: column;
+            }
+
+            .copy-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    
+/* Add this to your existing nav CSS */
+.nav-email {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+.nav-email:hover {
+    color: white;
+    border-color: var(--primary);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.nav-email i {
+    color: var(--primary);
+    font-size: 14px;
+}
+
+/* Mobile - Hide email on small screens */
+@media (max-width: 1024px) {
+    .nav-email {
+        display: none;
+    }
+}
+
+/* Tablet - Show shortened version */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav-email {
+        display: flex;
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
+
+/* Add this to your existing nav CSS */
+.nav-email-copy {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-email-copy:hover {
+    color: white;
+    border-color: var(--primary);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.nav-email-copy.copied {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: rgba(139, 92, 246, 0.15);
+}
+
+.nav-email-copy i {
+    color: var(--primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.nav-email-copy.copied i {
+    transform: scale(1.2);
+}
+
+/* Mobile - Hide email on small screens */
+@media (max-width: 1024px) {
+    .nav-email-copy {
+        display: none;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container nav-content">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-cube"></i> ADS4D
+        </a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#features">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="nav-email-copy" data-email="Bodhiads4D@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span class="email-text">Bodhiads4D@gmail.com</span>
+        </button>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">
+                <i class="fa-solid fa-bolt"></i> Elevate your ROI
+            </div>
+            <h1>Increase perceived value<br><span class="gradient-text">and unlock stronger ad performance</span></h1>
+            <p>We show the value of your product in a way regular camera's can't and make it impossible to replicate by combining high impact 3D visuals with AI UGC and motion graphics.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Start Project <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#work" class="btn btn-secondary">View Showreel</a>
+            </div>
+        </div>
+    </section>
+
+ 
+
+<!-- ADD THIS SECTION RIGHT AFTER YOUR HERO SECTION, BEFORE SERVICES -->
+<section class="showcase-3d">
+    <div class="showcase-container">
+        <div class="showcase-content">
+            <h2>3D Visuals.<br><span class="gradient-text">Real Impact.</span></h2>
+            <p>Traditional product photography shows what something looks like. We show what it <strong>feels</strong> like to own it.</p>
+            <p>Every detail, texture, and feature rendered in photorealistic 3D that makes your customers stop scrolling and start buying.</p>
+            <p>People can't easily move products in empty space, <span class="bold-text">we can.</span></p>
+            <div class="showcase-features">
+                <div class="showcase-feature">
+                    <i class="fa-solid fa-cube"></i>
+                    <span>Full 360° product visualization</span>
+                </div>
+                <div class="showcase-feature">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Hyper-realistic materials & lighting</span>
+                </div>
+                <div class="showcase-feature">
+                    <i class="fa-solid fa-infinity"></i>
+                    <span>Reusable across all platforms</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="threejs-canvas"></canvas>
+            <div class="scroll-hint">
+                <i class="fa-solid fa-chevron-down"></i>
+                <span>Scroll to explore</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Features Grid -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Top Brands Choose Us</h2>
+                <p>Here's how we make them stop, stare, and click "Add to Cart."</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-eye"></i></div>
+                    <h3>Attention Grabbing</h3>
+                    <p>Psychologically triggered visuals designed to interrupt scrolling patterns and hook customers in 1.3 seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>Hyper-Realism</h3>
+                    <p>Showcase and explain your product in a way that's impossible with regular videos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Conversion Focused</h3>
+                    <p>Every angle, light, and motion is optimized to highlight your product's value proposition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>See the <span class="gradient-text">Transformation</span></h2>
+                <p>Drag the slider to compare the before and after of our hyper-realistic 3D renders. It shows what we can do.</p>
+            </div>
+
+            <div class="comparison-layout">
+                <!-- Left: Comparisons -->
+                <div class="comparisons-column">
+                    <!-- Comparison 1 -->
+                    <div class="comparison-wrapper">
+                        <div class="comparison-container" data-comparison="1">
+                            <img src="./assets/before1.png" alt="Before" class="image-before">
+                            <img src="./assets/after1.png" alt="After" class="image-after">
+                            <div class="slider-line"></div>
+                            <div class="slider-handle"></div>
+                            <div class="comparison-labels">
+                                <span class="label label-before">start</span>
+                                <span class="label label-after">finish</span>
+                            </div>
+                        </div>
+                        <p class="comparison-caption">Product Showcase - Watch Detail</p>
+                    </div>
+
+                    <!-- Comparison 2 -->
+                    <div class="comparison-wrapper">
+                        <div class="comparison-container" data-comparison="2">
+                            <img src="./assets/before2.png" alt="Before" class="image-before">
+                            <img src="./assets/after2.png" alt="After" class="image-after">
+                            <div class="slider-line"></div>
+                            <div class="slider-handle"></div>
+                            <div class="comparison-labels">
+                                <span class="label label-before">start</span>
+                                <span class="label label-after">finish</span>
+                            </div>
+                        </div>
+                        <p class="comparison-caption">E-commerce Hero Image</p>
+                    </div>
+                </div>
+
+                <!-- Right: Process -->
+                <div class="process-column">
+                    <h3>How It Works</h3>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-icon">1</div>
+                            <div class="step-content">
+                                <h4>Discovery Call</h4>
+                                <p>Understanding your wants and needs.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-icon">2</div>
+                            <div class="step-content">
+                                <h4>Creating the Animation</h4>
+                                <p>Bringing your vision to life with precision.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-icon">3</div>
+                            <div class="step-content">
+                                <h4>Delivery</h4>
+                                <p>Receiving your high-quality 3D assets.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-icon">4</div>
+                            <div class="step-content">
+                                <h4>Revision</h4>
+                                <p>Fine-tuning until it's absolutely perfect.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REPLACE YOUR EXISTING PORTFOLIO SECTION WITH THIS -->
+<section id="work" class="portfolio">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Productions</h2>
+            <p>A curated selection of high-impact visuals that drive results.</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- Row 1: Two horizontal images -->
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="./assets/AIskydive.png" onerror="this.src='https://images.unsplash.com/photo-1555664424-778a69032334?q=80&w=1920&auto=format&fit=crop'" alt="AI Skydive">
+                    <div class="overlay">
+                        <span class="tag">Concept Art</span>
+                        <h3>Skydive Visualization</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/EsteeLauder.png" onerror="this.src='https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1920&auto=format&fit=crop'" alt="Beauty Product">
+                    <div class="overlay">
+                        <span class="tag">Cosmetics</span>
+                        <h3>Estée Lauder Campaign</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Two horizontal images -->
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/Insta360hero.png" onerror="this.src='https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1920&auto=format&fit=crop'" alt="Tech Product">
+                    <div class="overlay">
+                        <span class="tag">Tech</span>
+                        <h3>Insta360 Reveal</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/Lancaster.png" onerror="this.src='https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1920&auto=format&fit=crop'" alt="Lancaster">
+                    <div class="overlay">
+                        <span class="tag">Beauty</span>
+                        <h3>Lancaster Serum</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Two horizontal images -->
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/insta360web3.jpg" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1920&auto=format&fit=crop'" alt="Product 5">
+                    <div class="overlay">
+                        <span class="tag">Product Design</span>
+                        <h3>Showcasing features</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/esteeweb2.jpg" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1920&auto=format&fit=crop'" alt="Product 6">
+                    <div class="overlay">
+                        <span class="tag">Medical</span>
+                        <h3>Skin commercial</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: One horizontal image -->
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/esteeweb1.jpg" onerror="this.src='https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1920&auto=format&fit=crop'" alt="Product 7">
+                    <div class="overlay">
+                        <span class="tag">Beauty</span>
+                        <h3>Tv Medical</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: One vertical image (shares row with horizontal above) -->
+            <div class="work-card vertical">
+                <div class="media-wrapper">
+                    <img src="assets/canweb2.jpg" onerror="this.src='https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=1080&auto=format&fit=crop'" alt="Vertical Product 1">
+                    <div class="overlay">
+                        <span class="tag">Social Ready</span>
+                        <h3>Cinematic Product Shot</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 5: Two horizontal videos -->
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <video controls muted loop poster="assets/video1-poster.webp">
+                        <source src="assets/video1.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay">
+                        <span class="tag">Motion Design</span>
+                        <h3>Dynamic Product Animation</h3>
+                    </div>
+                </div>*-
+            </div>
+
+            <div class="work-card horizontal">
+            <div class="media-wrapper">
+                <video controls muted loop poster="assets/video2-poster.jpg">
+                    <source src="assets/video2.mp4" type="video/mp4">
+                </video>
+                <div class="overlay">
+                    <span class="tag">3D Rendering</span>
+                    <h3>Premium Product Showcase</h3>
+                </div>
+            </div>
+        </div>
+
+            <!-- Row 6: One horizontal image -->
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/insta360rocks.jpg" onerror="this.src='https://images.unsplash.com/photo-1560393464-5c69a73c5770?q=80&w=1920&auto=format&fit=crop'" alt="Product 9">
+                    <div class="overlay">
+                        <span class="tag">Electronics</span>
+                        <h3>360 degree camera</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 6: One vertical video (shares row with horizontal above) -->
+            <div class="work-card vertical">
+            <div class="media-wrapper">
+                <video controls muted loop poster="assets/video3-poster.jpg">
+                    <source src="assets/video3.mp4" type="video/mp4">
+                </video>
+                <div class="overlay">
+                    <span class="tag">Social Ready</span>
+                    <h3>TikTok Ad Format</h3>
+                </div>
+            </div>
+        </div>
+
+            <!-- Row 7: One horizontal image -->
+            <div class="work-card horizontal">
+                <div class="media-wrapper">
+                    <img src="assets/insta360web2.jpg" onerror="this.src='https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=1920&auto=format&fit=crop'" alt="Product 10">
+                    <div class="overlay">
+                        <span class="tag">Nature</span>
+                        <h3>Insta360 rain</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 7: One vertical image (shares row with horizontal above) -->
+            <div class="work-card vertical">
+                <div class="media-wrapper">
+                    <img src="assets/canweb1.jpg" onerror="this.src='https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1080&auto=format&fit=crop'" alt="Vertical Product 2">
+                    <div class="overlay">
+                        <span class="tag">Mobile First</span>
+                        <h3>Reels-Ready Content</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ADD THIS HTML SECTION BETWEEN HERO AND FEATURES -->
+<section class="services">
+    <div class="container">
+        <div class="services-header">
+            <h2>What You Get: <span class="gradient-text">Re-usable Assets</span></h2>
+            <p>Why choose a 3D solution? <br></p>
+        </div>
+        
+        <div class="services-list">
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Product Storytelling Beyond Words</h3>
+                    <p>Explode your product into detailed 3D views that show every material, texture, and feature. Make words unnecessary when the visuals explain everything your customer needs to know.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa-solid fa-infinity"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Future-Proof 3D Assets</h3>
+                    <p>Get renders that work for years across every channel: ads, website, emails, social. One investment, unlimited reuse. No reshoots, no recurring costs.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Smart Production</h3>
+                    <p>Eliminate expensive macro lenses, travel photographers, and UGC creators. Get studio-quality visuals from anywhere, anytime. All digitally controlled.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Premium Brand Positioning</h3>
+                    <p>Stand out in a sea of mediocre product photos. Create visuals so polished and unique, your competitors can't replicate them even if they tried.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Zero Language Barriers</h3>
+                    <p>Fluent communication in English, Dutch, and German. Work directly with me—no miscommunication, no delays, no headaches.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Perfect Brand Consistency</h3>
+                    <p>Say goodbye to "off-looking" product photos. Every setup is digitally identical, precisely matched to your brand colors, and perfectly aligned with your visual identity.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa-solid fa-bullhorn"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Copy That Converts</h3>
+                    <p>Get video scripts and messaging that actually drive sales. No fluff, no generic buzzwords—just conversion-focused copy that speaks directly to your customer's needs.</p>
+                </div>
+            </div>
+            <div class="service-item">
+            <div class="service-icon">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="service-content">
+                <h3>Lightning-Fast Iterations</h3>
+                <p>Need a different angle? New color variant? Changed your mind? Get updates in hours, not weeks. Digital flexibility means we pivot as fast as your marketing strategy demands.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="service-content">
+                <h3>Performance-Driven Visuals</h3>
+                <p>Every asset is engineered for conversion. From optimal file sizes for fast loading to attention-grabbing animations. Your visuals don't just look good, they perform.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <!-- Updated to assets folder and .png -->
+                    <img src="assets/me.png" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'" alt="Profile" class="about-img">
+                    <div class="stat-box">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Assets Delivered</div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span style="color: var(--primary); font-weight: 600; letter-spacing: 1px;">BEHIND THE PIXELS</span>
+                    <h2 style="font-family: 'Outfit'; font-size: 40px; margin: 15px 0 20px;">Built for Performance,<br>Designed for Sales.</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 18px;">
+                        I don't just create pretty pictures. I create assets that drive the bottom line.
+                        In a world of infinite scrolling, your brand needs to stand out instantly.
+                        
+                    </p>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">
+                        With more than 10 years of experience in videography, editing and 3D, I help ecommerce brands look like market leaders.
+                    </p>
+                    <div style="display: flex; gap: 20px;">
+                        <div>
+                            <i class="fa-solid fa-check" style="color: var(--primary)"></i> High Quality
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-check" style="color: var(--primary)"></i> Fast Turnaround
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-check" style="color: var(--primary)"></i> Social Ready
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <p>Everything you need to know about working together.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much does a Product Animation cost?</h3>
+                        <div class="faq-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Depending on your wants and needs it can range anywhere from $100 to $10,000. I recommend sending an email with your request and I'll give you a quote within 24 hours.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long will it take to receive my final product?</h3>
+                        <div class="faq-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            It depends on the length of the product. It can be anywhere from 24 hours to 14 days depending on the size of the project.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I get revisions?</h3>
+                        <div class="faq-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You get one revision for free. 3D is very intensive. All revisions after that will charge an hourly rate.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I get started?</h3>
+                        <div class="faq-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Either send an email or WhatsApp message and receive an answer within 24 hours.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>I need the text to be in a different language than English. Is this possible?</h3>
+                        <div class="faq-icon">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes. You can either send me the text you need, or we'll use AI to translate it.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+ <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to <span class="gradient-text">Scale Your Brand?</span></h2>
+                <p style="color: #cbd5e1; max-width: 500px; margin: 20px auto 40px;">Stop competing on price. Start competing on perception. Let's create visuals that justify your premium value.</p>
+                <div class="cta-group">
+                    <a href="mailto:Bodhiads4D@gmail.com" class="btn btn-primary">Bodhiads4D@gmail.com</a>
+                    <a href="https://wa.me/0612695331" class="btn btn-secondary"><i class="fa-brands fa-whatsapp"></i> 0612695331</a>
+                </div>
+
+                <!-- Quick Copy Section -->
+                <div class="quick-copy">
+                    <div class="quick-copy-label">Quick Copy</div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn" data-copy="Bodhiads4D@gmail.com">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="copy-text">Email</span>
+                        </button>
+                        <button class="copy-btn" data-copy="+31612695331">
+                            <i class="fa-regular fa-copy"></i>
+                            <span class="copy-text">WhatsApp Number</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo" style="font-size: 20px;">
+                    <i class="fa-solid fa-cube"></i> ADS4D
+                </a>
+                <div class="social-links">
+                
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Ads4D. Premium visuals for ecommerce brands. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="./js/scene.js"></script>
+    <script src="./js/slider.js"></script>
+     <script>
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <script>
+        // Copy to Clipboard Functionality
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', async () => {
+                const textToCopy = button.getAttribute('data-copy');
+                const icon = button.querySelector('i');
+                const originalText = button.querySelector('.copy-text').textContent;
+                
+                try {
+                    await navigator.clipboard.writeText(textToCopy);
+                    
+                    // Visual feedback
+                    button.classList.add('copied');
+                    icon.className = 'fa-solid fa-check';
+                    button.querySelector('.copy-text').textContent = 'Copied!';
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        button.classList.remove('copied');
+                        icon.className = 'fa-regular fa-copy';
+                        button.querySelector('.copy-text').textContent = originalText;
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                    button.querySelector('.copy-text').textContent = 'Failed to copy';
+                    setTimeout(() => {
+                        button.querySelector('.copy-text').textContent = originalText;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+    <script>
+// Auto-unmute videos when user clicks play
+document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('play', function() {
+        this.muted = false;
+        this.volume = 0.7; // Set volume to 70% (adjust as needed)
+    });
+    
+    // Optional: Mute again when video is paused
+    video.addEventListener('pause', function() {
+        this.muted = true;
+    });
+});
+</script>
+<script>
+// Copy email to clipboard from navbar
+document.querySelector('.nav-email-copy')?.addEventListener('click', async function() {
+    const email = this.getAttribute('data-email');
+    const emailText = this.querySelector('.email-text');
+    const icon = this.querySelector('i');
+    const originalText = emailText.textContent;
+    
+    try {
+        await navigator.clipboard.writeText(email);
+        
+        // Visual feedback
+        this.classList.add('copied');
+        icon.className = 'fa-solid fa-check';
+        emailText.textContent = 'Copied!';
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+            this.classList.remove('copied');
+            icon.className = 'fa-solid fa-envelope';
+            emailText.textContent = originalText;
+        }, 2000);
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        emailText.textContent = 'Failed to copy';
+        setTimeout(() => {
+            emailText.textContent = originalText;
+        }, 2000);
+    }
+});
+</script>
+
+
+</body>
+
+</html>
+
