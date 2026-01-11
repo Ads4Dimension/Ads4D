@@ -1344,15 +1344,8 @@
     }
 }
 
-/* EMERGENCY MOBILE PERFORMANCE FIX */
 @media (max-width: 768px) {
-    /* Disable 3D completely on mobile */
     .showcase-3d {
-        display: none !important;
-    }
-    
-    /* Hide heavy sections on mobile */
-    .comparison-section {
         display: none !important;
     }
 }
@@ -2099,119 +2092,161 @@
         </div>
     </footer>
 
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="./js/scene.js"></script>
-    <script src="./js/slider.js"></script>
-     <script>
-        // FAQ Accordion Functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all other FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Toggle current item
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
-    </script>
-    <script>
-        // Copy to Clipboard Functionality
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', async () => {
-                const textToCopy = button.getAttribute('data-copy');
-                const icon = button.querySelector('i');
-                const originalText = button.querySelector('.copy-text').textContent;
-                
-                try {
-                    await navigator.clipboard.writeText(textToCopy);
-                    
-                    // Visual feedback
-                    button.classList.add('copied');
-                    icon.className = 'fa-solid fa-check';
-                    button.querySelector('.copy-text').textContent = 'Copied!';
-                    
-                    // Reset after 2 seconds
-                    setTimeout(() => {
-                        button.classList.remove('copied');
-                        icon.className = 'fa-regular fa-copy';
-                        button.querySelector('.copy-text').textContent = originalText;
-                    }, 2000);
-                } catch (err) {
-                    console.error('Failed to copy:', err);
-                    button.querySelector('.copy-text').textContent = 'Failed to copy';
-                    setTimeout(() => {
-                        button.querySelector('.copy-text').textContent = originalText;
-                    }, 2000);
-                }
-            });
-        });
-    </script>
-    <script>
-// Auto-unmute videos when user clicks play
-document.querySelectorAll('video').forEach(video => {
-    video.addEventListener('play', function() {
-        this.muted = false;
-        this.volume = 0.7; // Set volume to 70% (adjust as needed)
-    });
-    
-    // Optional: Mute again when video is paused
-    video.addEventListener('pause', function() {
-        this.muted = true;
-    });
-});
-</script>
+  <!-- Slider for comparison section -->
+<script src="./js/slider.js"></script>
+
+<!-- FAQ Accordion Functionality -->
 <script>
-// Copy email to clipboard from navbar
-document.querySelector('.nav-email-copy')?.addEventListener('click', async function() {
-    const email = this.getAttribute('data-email');
-    const emailText = this.querySelector('.email-text');
-    const icon = this.querySelector('i');
-    const originalText = emailText.textContent;
-    
-    try {
-        await navigator.clipboard.writeText(email);
-        
-        // Visual feedback
-        this.classList.add('copied');
-        icon.className = 'fa-solid fa-check';
-        emailText.textContent = 'Copied!';
-        
-        // Reset after 2 seconds
-        setTimeout(() => {
-            this.classList.remove('copied');
-            icon.className = 'fa-solid fa-envelope';
-            emailText.textContent = originalText;
-        }, 2000);
-    } catch (err) {
-        console.error('Failed to copy:', err);
-        emailText.textContent = 'Failed to copy';
-        setTimeout(() => {
-            emailText.textContent = originalText;
-        }, 2000);
-    }
-});
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        });
+    });
 </script>
-<!-- ADD THESE TWO LINES -->
-<!-- Three.js Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-<!-- ADD THIS LINE FOR DRACO SUPPORT -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+
+<!-- Copy to Clipboard Functionality -->
+<script>
+    document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+            const textToCopy = button.getAttribute('data-copy');
+            const icon = button.querySelector('i');
+            const originalText = button.querySelector('.copy-text').textContent;
+            
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                
+                // Visual feedback
+                button.classList.add('copied');
+                icon.className = 'fa-solid fa-check';
+                button.querySelector('.copy-text').textContent = 'Copied!';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    icon.className = 'fa-regular fa-copy';
+                    button.querySelector('.copy-text').textContent = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                button.querySelector('.copy-text').textContent = 'Failed to copy';
+                setTimeout(() => {
+                    button.querySelector('.copy-text').textContent = originalText;
+                }, 2000);
+            }
+        });
+    });
+</script>
+
+<!-- Auto-unmute videos when user clicks play -->
+<script>
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('play', function() {
+            this.muted = false;
+            this.volume = 0.7; // Set volume to 70% (adjust as needed)
+        });
+        
+        // Optional: Mute again when video is paused
+        video.addEventListener('pause', function() {
+            this.muted = true;
+        });
+    });
+</script>
+
+<!-- Copy email to clipboard from navbar -->
+<script>
+    document.querySelector('.nav-email-copy')?.addEventListener('click', async function() {
+        const email = this.getAttribute('data-email');
+        const emailText = this.querySelector('.email-text');
+        const icon = this.querySelector('i');
+        const originalText = emailText.textContent;
+        
+        try {
+            await navigator.clipboard.writeText(email);
+            
+            // Visual feedback
+            this.classList.add('copied');
+            icon.className = 'fa-solid fa-check';
+            emailText.textContent = 'Copied!';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                this.classList.remove('copied');
+                icon.className = 'fa-solid fa-envelope';
+                emailText.textContent = originalText;
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy:', err);
+            emailText.textContent = 'Failed to copy';
+            setTimeout(() => {
+                emailText.textContent = originalText;
+            }, 2000);
+        }
+    });
+</script>
+
+<!-- 3D Scene - DESKTOP ONLY (Performance optimization for mobile) -->
+<script>
+    // Only load 3D libraries on desktop devices
+    if (window.innerWidth > 768) {
+        console.log('Desktop detected - Loading 3D scene...');
+        
+        // Load scripts sequentially to ensure proper order
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = false;
+                script.onload = () => {
+                    console.log('Loaded:', src);
+                    resolve();
+                };
+                script.onerror = () => {
+                    console.error('Failed to load:', src);
+                    reject();
+                };
+                document.body.appendChild(script);
+            });
+        }
+        
+        // Load all Three.js libraries in sequence
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+            .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'))
+            .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js'))
+            .then(() => {
+                // Wait a bit to ensure THREE is fully available
+                setTimeout(() => {
+                    if (typeof THREE !== 'undefined') {
+                        console.log('THREE is ready, loading scene...');
+                        return loadScript('./js/scene.js');
+                    } else {
+                        console.error('THREE not found after loading!');
+                    }
+                }, 100);
+            })
+            .then(() => {
+                console.log('3D scene loaded successfully');
+            })
+            .catch(err => {
+                console.error('Error loading 3D libraries:', err);
+            });
+    } else {
+        console.log('Mobile detected - 3D scene disabled for performance');
+    }
+</script>
+
 <!-- Font Awesome - Load last -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    
-</body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
 </body>
-
 </html>
-

@@ -1,10 +1,19 @@
 // scene.js - 3D Model Animation with Cinematic Lighting + Draco Support
 
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', () => {
+// Mobile check - exit early
+if (window.innerWidth <= 768) {
+    console.log('Mobile detected - skipping 3D scene');
+    throw new Error('Mobile - 3D disabled');
+}
+
+// FIXED: Instead of waiting for DOMContentLoaded, run immediately or check if DOM is ready
+function initScene() {
     // Get canvas element
     const canvas = document.getElementById('threejs-canvas');
-    if (!canvas) return;
+    if (!canvas) {
+        console.error('Canvas not found!');
+        return;
+    }
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -90,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load your 3D model
     loader.load(
-        './assets/iphoneweb16.glb', // UPDATE THIS to your actual file name
+        './assets/iphoneweb16.glb',
         (gltf) => {
             model = gltf.scene;
             
@@ -107,19 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log('  Has map texture:', !!child.material.map);
                         if (child.material.map) {
                             console.log('  ✅ TEXTURE FOUND on:', child.name);
-                            console.log('  Texture image:', child.material.map.image);
-                            console.log('  Texture size:', child.material.map.image?.width, 'x', child.material.map.image?.height);
                             
                             // CRITICAL FIX: Force texture to use UV channel 0
                             child.material.map.channel = 0;
-                            
-                            // Check which UV attributes are available
-                            console.log('  Available UV attributes:');
-                            Object.keys(child.geometry.attributes).forEach(key => {
-                                if (key.startsWith('uv')) {
-                                    console.log('    -', key);
-                                }
-                            });
                             
                             // Force texture to update and render correctly
                             child.material.map.needsUpdate = true;
@@ -141,8 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             } else if (child.geometry.attributes.uv2) {
                                 console.log('  ⚠️ Only has UV2 - copying to UV');
                                 child.geometry.setAttribute('uv', child.geometry.attributes.uv2);
-                            } else {
-                                console.log('  ❌ No UV coordinates found!');
                             }
                             
                             // If this is the screen, make it bright and clear
@@ -185,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Auto-adjust camera based on model size
             const fov = camera.fov * (Math.PI / 180);
             let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-            cameraZ *= 2.2; // Increased from 1.5 to give more space and prevent clipping
+            cameraZ *= 2.2;
 
             // Use exported camera if available, otherwise use auto-calculated
             if (gltf.cameras && gltf.cameras.length > 0) {
@@ -216,9 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             console.log('✅ Model loaded successfully with Draco compression');
-            console.log('Model bounds:', size);
-            console.log('Cameras found:', gltf.cameras ? gltf.cameras.length : 0);
-            console.log('Animations found:', gltf.animations ? gltf.animations.length : 0);
         },
         (progress) => {
             const percentComplete = (progress.loaded / progress.total) * 100;
@@ -269,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetTime = scrollProgress * duration;
         
         // CRITICAL FIX: Reset the action if we're scrolling back into view
-        // This allows the animation to work again after scrolling past the section
         if (animationAction.paused || animationAction.time === duration) {
             animationAction.paused = false;
             animationAction.enabled = true;
@@ -289,14 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animate() {
         requestAnimationFrame(animate);
-
         const delta = clock.getDelta();
-
-        // Uncomment these lines for auto-playing animation instead of scroll-driven
-        // if (mixer) {
-        //     mixer.update(delta);
-        // }
-
         renderer.render(scene, camera);
     }
 
@@ -307,4 +293,12 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll();
 
     console.log('🎬 Three.js scene initialized with Draco support');
-});
+}
+
+// Run initialization - check if DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScene);
+} else {
+    // DOM is already loaded (dynamic script injection case)
+    initScene();
+}
