@@ -1,4 +1,4 @@
-// scene.js - 3D Model Animation with Cinematic Lighting
+// scene.js - 3D Model Animation with Cinematic Lighting + Draco Support
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scene.add(accentLight2);
 
     // ============================================
-    // MODEL LOADING
+    // MODEL LOADING WITH DRACO SUPPORT
     // ============================================
 
     let model = null;
@@ -80,12 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let clock = new THREE.Clock();
     let modelCenter = new THREE.Vector3();
 
-    // GLTF Loader
+    // GLTF Loader with Draco Support
     const loader = new THREE.GLTFLoader();
+    
+    // Add Draco Loader for compressed models
+    const dracoLoader = new THREE.DRACOLoader();
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+    loader.setDRACOLoader(dracoLoader);
 
     // Load your 3D model
     loader.load(
-        './assets/iphoneweb14.glb', // UPDATE THIS to your actual file name
+        './assets/iphoneweb16.glb', // UPDATE THIS to your actual file name
         (gltf) => {
             model = gltf.scene;
             
@@ -210,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Animation loaded:', gltf.animations[0].name, 'Duration:', gltf.animations[0].duration);
             }
 
-            console.log('✅ Model loaded successfully');
+            console.log('✅ Model loaded successfully with Draco compression');
             console.log('Model bounds:', size);
             console.log('Cameras found:', gltf.cameras ? gltf.cameras.length : 0);
             console.log('Animations found:', gltf.animations ? gltf.animations.length : 0);
@@ -301,5 +306,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial scroll check
     handleScroll();
 
-    console.log('🎬 Three.js scene initialized');
+    console.log('🎬 Three.js scene initialized with Draco support');
 });
